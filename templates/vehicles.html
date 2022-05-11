@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+{% block title %}
+    Vehicles
+{% endblock title %}
+{% block content %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Car Plate</th>
+                <th>Total KM</th>
+            </tr>
+            {% for vehicle in vehicles %}
+                <tr>
+                    <td>{{ vehicle.plate }}</td>
+                    <td>{{ vehicle.total_km | floatformat:1}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+{% endblock content %}

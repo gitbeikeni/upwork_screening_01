@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+{% block title %}
+    Passengers
+{% endblock title %}
+{% block content %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Passenger</th>
+                <th>Car Plate</th>
+                <th>Distance Traveled</th>
+                <th>Aggregated Trips Count</th>
+            </tr>
+            {% for passenger in passengers %}
+                <tr>  
+                    <td class="align-middle" {% if passenger.trips.count == 1 %} rowspan=2 {% else %}rowspan={{ passenger.trips.count }} {% endif %}>{{ passenger.user.first_name }}</td>
+                </tr>
+                {% for vehicle, distance in passenger.get_vehicles.items %}
+                    <tr>
+                        <td>{{ vehicle }}</td>
+                        <td>{{ distance|floatformat:1}} Km</td>
+                        <td>{{ vehicle.trips.count }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}
