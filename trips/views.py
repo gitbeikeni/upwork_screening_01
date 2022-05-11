@@ -8,6 +8,8 @@ from .models import Trip, Vehicle, Passenger
     I have opted to use generic view to keep the code succint and readable, but
     it would have been just the same for me to reproduce the same result implementing
     the views myself.
+
+    The little business logic necessary for this project is implemented through model methods. 
 """
 
 class AddTripView(CreateView):

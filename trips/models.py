@@ -21,5 +21,5 @@ class Passenger(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='passenger')
 
     def get_vehicles(self):
-        return { trip.vehicle: self.trips.filter(vehicle=trip.vehicle).aggregate(Sum('distance'))['distance__sum'] for trip in self.trips.all()}
+        return { trip.vehicle: self.trips.filter(vehicle=trip.vehicle).aggregate(Sum('distance'))['distance__sum'] for trip in self.trips.all() }
         
